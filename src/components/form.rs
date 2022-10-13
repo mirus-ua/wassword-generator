@@ -39,10 +39,10 @@ pub fn Form<'a, T: Html>(cx: Scope<'a>, props: Props<'a>) -> View<T> {
     view! { cx,
       form(class="form__container paper") {
         Range(amount_of_numbers=range)
-        Checkbox(label="Include Uppercase Letters".to_owned(), id="upper".to_owned(), value=isUpper)
-        Checkbox(label="Include Lowercase Letters".to_owned(), id="lower".to_owned(), value=isLower)
-        Checkbox(label="Include Numbers".to_owned(), id="number".to_owned(), value=isNumber)
-        Checkbox(label="Include Uppercase Letters".to_owned(), id="symbol".to_owned(), value=isSymbols)
+        Checkbox(label="Include Uppercase Letters".to_owned(), id="upper", value=isUpper)
+        Checkbox(label="Include Lowercase Letters".to_owned(), id="lower", value=isLower)
+        Checkbox(label="Include Numbers".to_owned(), id="number", value=isNumber)
+        Checkbox(label="Include Uppercase Letters".to_owned(), id="symbol", value=isSymbols)
         button(type="button", on:click=handle_click, disabled=is_button_disabled()) {"Generate"}
       }
     }
