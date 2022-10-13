@@ -11,10 +11,10 @@ pub struct Props<'a> {
 #[component]
 pub fn Form<'a, T: Html>(cx: Scope<'a>, props: Props<'a>) -> View<T> {
     let range = create_signal(cx, String::from("8"));
-    let isUpper = create_signal(cx, String::from("upper"));
-    let isLower = create_signal(cx, String::from("lower"));
-    let isNumber = create_signal(cx, String::from("number"));
-    let isSymbols = create_signal(cx, String::from("symbol"));
+    let isUpper = create_signal(cx, Some(String::from("upper")));
+    let isLower = create_signal(cx, Some(String::from("lower")));
+    let isNumber = create_signal(cx, Some(String::from("number")));
+    let isSymbols = create_signal(cx, Some(String::from("symbol")));
 
     let handle_click = |_| {
         let rng = range
@@ -45,6 +45,5 @@ pub fn Form<'a, T: Html>(cx: Scope<'a>, props: Props<'a>) -> View<T> {
         Checkbox(label="Include Uppercase Letters".to_owned(), id="symbols".to_owned(), value=isSymbols)
         button(type="button", on:click=handle_click, disabled=is_button_disabled()) {"Generate"}
       }
-      p {(isUpper.get())}
     }
 }

@@ -23,21 +23,24 @@ fn get_random_symbol() -> u8 {
 
 pub fn string_generator(
     range: usize,
-    is_upper: &Signal<String>,
-    is_lower: &Signal<String>,
-    is_number: &Signal<String>,
-    is_symbol: &Signal<String>,
+    is_upper: &Signal<Option<String>>,
+    is_lower: &Signal<Option<String>>,
+    is_number: &Signal<Option<String>>,
+    is_symbol: &Signal<Option<String>>,
 ) -> String {
     let mut rng = rand::thread_rng();
     let mut generators: Vec<&dyn Fn() -> u8> = vec![];
 
-    for char_type in [is_upper, is_lower, is_number, is_symbol] {
-        match char_type.get().as_str() {
-            "upper" => generators.push(&get_random_upper),
-            "lower" => generators.push(&get_random_lower),
-            "number" => generators.push(&get_random_number),
-            "symbol" => generators.push(&get_random_symbol),
-            _ => (),
+    for char_option in [is_upper, is_lower, is_number, is_symbol] {
+        match &*char_option.get() {
+            None => (),
+            Some(char_type) => match char_type.as_str() {
+                "upper" => generators.push(&get_random_upper),
+                "lower" => generators.push(&get_random_lower),
+                "number" => generators.push(&get_random_number),
+                "symbol" => generators.push(&get_random_symbol),
+                _ => (),
+            },
         }
     }
 

@@ -8,7 +8,7 @@ use web_sys::HtmlInputElement;
 pub struct Props<'a> {
     label: String,
     id: String,
-    value: &'a Signal<String>,
+    value: &'a Signal<Option<String>>,
 }
 
 #[component]
@@ -20,12 +20,12 @@ pub fn Checkbox<'a, T: Html>(cx: Scope<'a>, props: Props<'a>) -> View<T> {
           (props.label)
           input(id=props.id.clone(), type="checkbox", on:click= |e: Event| {
             if *checked.get()  {
-              props.value.set(String::new());
+              props.value.set(None);
               checked.set(false);
             } else {
               match e.target() {
                 None => (),
-                Some(target) => props.value.set(target.unchecked_into::<HtmlInputElement>().id())
+                Some(target) => props.value.set(Some(target.unchecked_into::<HtmlInputElement>().id()))
               }
               checked.set(true)
             }
