@@ -1,1 +1,11 @@
-@import 'reset', 'pages', 'form', 'layout';
+
+
+@import 'variables', 'reset', 'pages', 'form', 'layout';
+
+input {
+  accent-color: $wasm-color;
+}
+
+* {
+  font-family: 'Share Tech Mono', monospace;
+}

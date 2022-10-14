@@ -1,5 +1,5 @@
 use sycamore::prelude::*;
-// use web_sys::Clipboard;
+use web_sys::window;
 
 #[derive(Prop)]
 pub struct Props<'a> {
@@ -13,9 +13,7 @@ pub fn Result<'a, T: Html>(cx: Scope<'a>, props: Props<'a>) -> View<T> {
       div(class="paper") {
         p {(props.result.get())}
         button(type="button", on:click=|_|{
-
-          // let clp = Clipboard {};
-          // Clipboard::write_text(&clp ,&props.result.get());
+          let _promise = window().unwrap().navigator().clipboard().unwrap().write_text(&props.result.get());
         }) { "copy" }
       }
     }
