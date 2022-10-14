@@ -1,4 +1,5 @@
 pub mod checkbox;
+pub mod footer;
 pub mod form;
 pub mod header;
 pub mod range;

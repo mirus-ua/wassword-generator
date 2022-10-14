@@ -7,6 +7,7 @@ edition = "2021"
 
 [dependencies]
 sycamore = "0.8"
-web-sys = "0.3.60"
+web-sys = {version = "0.3.60", features = ["Clipboard"]}
 rand = "0.8.5"
 getrandom = { version = "0.2", features = ["js"] }
+strum_macros = "0.24.3"

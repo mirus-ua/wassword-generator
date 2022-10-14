@@ -1,45 +1,33 @@
 use rand::Rng;
 use sycamore::reactive::Signal;
 
-fn get_random_upper() -> u8 {
-    let mut rng = rand::thread_rng();
-    rng.gen_range(65..90)
-}
+use crate::components::form::CharTypes;
 
-fn get_random_lower() -> u8 {
-    let mut rng = rand::thread_rng();
-    rng.gen_range(97..122)
+fn get_random_char_number_from_range(from: u8, to: u8) -> impl Fn() -> u8 {
+    move || {
+        let mut rng = rand::thread_rng();
+        rng.gen_range(from..to)
+    }
 }
-
-fn get_random_number() -> u8 {
-    let mut rng = rand::thread_rng();
-    rng.gen_range(48..57)
-}
-
-fn get_random_symbol() -> u8 {
-    let mut rng = rand::thread_rng();
-    rng.gen_range(42..47)
-}
-
-pub fn string_generator(
+pub fn string_generator<'a>(
     range: usize,
-    is_upper: &Signal<Option<String>>,
-    is_lower: &Signal<Option<String>>,
-    is_number: &Signal<Option<String>>,
-    is_symbol: &Signal<Option<String>>,
+    char_options: [&Signal<Option<&'a CharTypes>>; 4],
 ) -> String {
     let mut rng = rand::thread_rng();
     let mut generators: Vec<&dyn Fn() -> u8> = vec![];
+    let gen_upper = get_random_char_number_from_range(65, 90);
+    let gen_lower = get_random_char_number_from_range(97, 122);
+    let gen_number = get_random_char_number_from_range(48, 57);
+    let gen_symbol = get_random_char_number_from_range(42, 47);
 
-    for char_option in [is_upper, is_lower, is_number, is_symbol] {
+    for char_option in char_options {
         match &*char_option.get() {
             None => (),
-            Some(char_type) => match char_type.as_str() {
-                "upper" => generators.push(&get_random_upper),
-                "lower" => generators.push(&get_random_lower),
-                "number" => generators.push(&get_random_number),
-                "symbol" => generators.push(&get_random_symbol),
-                _ => (),
+            Some(char_type) => match char_type {
+                CharTypes::Upper => generators.push(&gen_upper),
+                CharTypes::Lower => generators.push(&gen_lower),
+                CharTypes::Number => generators.push(&gen_number),
+                CharTypes::Symbol => generators.push(&gen_symbol),
             },
         }
     }
