@@ -9,7 +9,10 @@ pub struct Props<'a> {
 pub fn Range<'a, T: Html>(cx: Scope<'a>, props: Props<'a>) -> View<T> {
     view! {
       cx,
-      p {"Characters length" (props.amount_of_numbers.get())}
-      input(type="range", min=0, max=16, value=props.amount_of_numbers.get(), bind:value=props.amount_of_numbers)
+      p(class="form__range-text-container") {
+        span { "Characters length" }
+        span { (props.amount_of_numbers.get()) }
+      }
+      input(class="form__range", type="range", min=0, max=16, value=props.amount_of_numbers.get(), bind:value=props.amount_of_numbers)
     }
 }

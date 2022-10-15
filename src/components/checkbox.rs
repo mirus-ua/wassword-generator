@@ -12,7 +12,7 @@ pub struct Props<'a> {
 #[component]
 pub fn Checkbox<'a, T: Html>(cx: Scope<'a>, props: Props<'a>) -> View<T> {
     view! { cx,
-      label {
+      label(class="form__checkbox-label") {
           (props.label)
           input(id=props.id, type="checkbox", on:click= |_| {
             match &*props.value.get() {

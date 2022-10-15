@@ -3,6 +3,11 @@ use sycamore::prelude::*;
 #[component]
 pub fn Header<T: Html>(cx: Scope) -> View<T> {
     view! { cx,
-      h2(class="index-page__header") {"WAssword Generator"}
+      header(class="header") {
+        h2(class="header__content") {
+          span(class="header__logo-highlight") { "WA" }
+          "ssword Generator"
+        }
+      }
     }
 }

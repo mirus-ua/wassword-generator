@@ -4,8 +4,22 @@
 
 input {
   accent-color: $wasm-color;
+  &:active, &:hover {
+    accent-color: $wasi-color;
+  }
 }
 
 * {
   font-family: 'Share Tech Mono', monospace;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  width: 100vw;
+  height: 100vh;
+  background: $bg;
+  color: #fff;
 }

@@ -1,21 +1,11 @@
-body {
-  width: 100vw;
-  height: 100vh;
-  background: rgb(21, 21, 21);
-  color: #fff;
-}
+
 
 .index-page {
+  width: 500px;
   display: grid;
-  grid-template-rows: 1fr 2fr 20fr 1fr;
+  grid-template-rows: 1fr 1fr auto 1fr;
   align-content: center;
   justify-content: center;
-  padding: 5rem;
   gap: 1rem;
 }
 
-.index-page__header {
-  font-size: 2rem;
-  text-align: center;
-  color: gray;
-}

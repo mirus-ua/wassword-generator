@@ -1,6 +1,6 @@
 use sycamore::prelude::*;
 
-use super::{checkbox::Checkbox, range::Range};
+use super::{checkbox::Checkbox, range::Range, strengths::Strength};
 use crate::utils::generator::string_generator;
 
 #[derive(strum_macros::Display)]
@@ -51,7 +51,8 @@ pub fn Form<'a, T: Html>(cx: Scope<'a>, props: Props<'a>) -> View<T> {
         Checkbox(label="Include Lowercase Letters".to_owned(), id=&CharTypes::Lower, value=isLower)
         Checkbox(label="Include Numbers".to_owned(), id=&CharTypes::Number, value=isNumber)
         Checkbox(label="Include Uppercase Letters".to_owned(), id=&CharTypes::Symbol, value=isSymbols)
-        button(type="button", on:click=handle_click, disabled=is_button_disabled()) {"Generate"}
+        Strength(value=props.result)
+        button(class="form__button",type="button", on:click=handle_click, disabled=is_button_disabled()) {"Generate ➜"}
       }
     }
 }

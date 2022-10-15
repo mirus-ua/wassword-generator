@@ -1,6 +1,84 @@
 .form__container {
-  width: 450px;
-  height: 500px;
   display: flex;
   flex-direction: column;
+}
+
+.form__checkbox-label {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: start;
+  margin-bottom: .75rem;
+}
+
+.form__result {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form__result-pass {
+  font-size: 1.8rem;
+}
+
+.form__result-button {
+  width: 2rem;
+  height: 2rem;
+  background: none;
+  font-size: 1.7rem;
+  line-height: 1rem;
+  padding: 0;
+  cursor: pointer;
+  border: 2px solid $wasm-color;
+  transition: $ani-speed;
+
+  &:hover {
+    border: 2px solid $wasi-color;
+    transition: $ani-speed;
+  }
+}
+
+.form__range-text-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.5rem;
+  padding-bottom: .5rem;
+
+  span:last-child {
+    font-size: 2rem;
+    color: $wasm-color;
+  }
+}
+
+.form__range {
+  margin-bottom: 1rem;
+}
+
+.form__button {
+  color: white;
+  padding: .5rem;
+  background-color: $wasm-color;
+  border-color: $wasm-color;
+  transition: $ani-speed;
+
+  &:hover, &:active {
+    background-color: $wasi-color;
+    border-color: $wasi-color;
+    transition: $ani-speed;
+  }
+}
+
+.form__strength-container {
+  padding: 1rem;
+  background-color: $bg;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-block: 1rem;
+}
+
+.form__bars-container {
+  display: flex;
+  gap: .25rem;
 }
