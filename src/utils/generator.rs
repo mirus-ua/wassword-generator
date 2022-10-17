@@ -32,11 +32,19 @@ pub fn string_generator<'a>(
         }
     }
 
-    let mut chars_range: Vec<u8> = vec![0; range];
+    let mut chars_range: Vec<u8> = vec![];
 
-    for el in &mut chars_range {
+    loop {
+        if chars_range.len() == range {
+            break;
+        }
+
         let rand_generator_index = rng.gen_range(0..generators.len());
-        *el = generators[rand_generator_index]();
+        let rand_res = generators[rand_generator_index]();
+
+        if !chars_range.contains(&rand_res) {
+            chars_range.push(rand_res);
+        }
     }
 
     String::from_utf8(chars_range).unwrap()
