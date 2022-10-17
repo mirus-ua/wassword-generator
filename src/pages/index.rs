@@ -4,7 +4,7 @@ use crate::components::{footer::Footer, form::Form, header::Header, result::Resu
 
 #[component]
 pub fn Index<T: Html>(cx: Scope) -> View<T> {
-    let result = create_signal(cx, "P4$w0rD!".to_owned());
+    let result = create_signal(cx, String::from(""));
 
     view! { cx,
       main(class="index-page") {

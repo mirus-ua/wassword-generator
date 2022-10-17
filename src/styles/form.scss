@@ -31,10 +31,28 @@
   cursor: pointer;
   border: 2px solid $wasm-color;
   transition: $ani-speed;
+  position: relative;
+}
+
+.form__result-button-active {
+  &:after {
+    content: 'Copy!';
+    background-color: white;
+    padding: .2rem;
+    font-size: .8rem;
+    position: absolute;
+    top: 115%;
+    left: 50%;
+    translate: -50% 0;
+    visibility: hidden;
+  }
 
   &:hover {
-    border: 2px solid $wasi-color;
-    transition: $ani-speed;
+    &:after {
+      border: 2px solid $wasi-color;
+      transition: $ani-speed;
+      visibility: visible;
+    }
   }
 }
 
@@ -81,4 +99,10 @@
 .form__bars-container {
   display: flex;
   gap: .25rem;
+}
+
+.form__password-placeholder {
+  color: $grey-text;
+  pointer-events: none;
+  user-select: none;
 }
