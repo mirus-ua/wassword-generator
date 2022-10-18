@@ -1,2 +1,7 @@
 /target
 /dist
+
+
+.firebaserc
+.firebase
+firebase.json

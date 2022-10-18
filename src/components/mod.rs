@@ -5,3 +5,4 @@ pub mod header;
 pub mod range;
 pub mod result;
 pub mod strengths;
+pub mod bar;

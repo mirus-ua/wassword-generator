@@ -35,15 +35,15 @@ pub fn string_generator<'a>(
     let mut chars_range: Vec<u8> = vec![];
 
     loop {
-        if chars_range.len() == range {
-            break;
-        }
-
         let rand_generator_index = rng.gen_range(0..generators.len());
         let rand_res = generators[rand_generator_index]();
 
         if !chars_range.contains(&rand_res) {
             chars_range.push(rand_res);
+        }
+
+        if chars_range.len() == range {
+            break;
         }
     }
 

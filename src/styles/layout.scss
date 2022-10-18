@@ -3,6 +3,12 @@
   padding: 1rem;
 }
 
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
 .footer__link {
   color: $bg;
   background-color: $wasm-color;

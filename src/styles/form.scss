@@ -80,6 +80,11 @@
   border-color: $wasm-color;
   transition: $ani-speed;
 
+  &:disabled {
+    background-color: grey;
+    pointer-events: none;
+  }
+
   &:hover, &:active {
     background-color: $wasi-color;
     border-color: $wasi-color;
@@ -98,11 +103,37 @@
 
 .form__bars-container {
   display: flex;
-  gap: .25rem;
+  gap: .5rem;
 }
 
 .form__password-placeholder {
   color: $grey-text;
   pointer-events: none;
   user-select: none;
+}
+
+.form__strength-bar {
+  border: 1px solid white;
+  height: 1rem;
+  width: .7rem;
+}
+
+.form__strength-low {
+  background-color: tomato;
+  border: currentcolor;
+}
+
+.form__strength-mid {
+  background-color: yellow;
+  border: currentcolor;
+}
+
+.form__strength-good {
+  background-color: green;
+  border: currentcolor;
+}
+
+.form__strength-superb {
+  background-color: $wasm-color;
+  border: currentcolor;
 }
